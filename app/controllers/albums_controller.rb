@@ -11,6 +11,7 @@ class AlbumsController < ApplicationController
 
   def create
     @album = Album.new(album_params)
+    @user = @album.user
     if @album.save
       flash[:notice] = "Your album name was added!"
       redirect_to :back

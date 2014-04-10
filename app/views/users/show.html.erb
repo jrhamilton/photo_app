@@ -1,8 +1,11 @@
 <h1>Howdy, <%= @user.name %></h1>
 
+
+
 <%= image_tag @user.avatar.url(:medium), :class => 'display-image' %>
 
 <div class="user_box_right">
+  <%= render 'layouts/errors', :object => @album %>
   <h3>Create New Album</h3>
   <%= form_for @album do |f| %>
     <div class="form-contrl">
@@ -25,13 +28,14 @@
           <%= link_to image_tag(album.photos[0].picture.url(:medium)), album_path(album), :class => 'display-image' %>
         </div>
         <h3><%= album.name %><br /></h3>
-
+        <%= link_to "Edit Album", album_path(album), :class => "btn btn-success" %>
         <%= link_to "Delete Album", album_path(album),
                                 :confirm => "Are you sure?",
                                 :method => "delete",
                                 :class => "btn btn-danger btn-xs xdelete" %>
       <% else %>
-        <h3>No Photos</h3>
+        <div class="display-image-block" style="background-color:grey">No Photos</h3></div>
+        <h3><%= album.name %><br /></h3>
         <%= link_to "Edit Album", album_path(album), :class => "btn btn-success" %>
       <% end %>
     </div>

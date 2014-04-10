@@ -4,7 +4,7 @@ body {
 
 
 
-div, form, h1, h2, h3, h4, h5, h6, p, hr {
+div, form, h1, h2, h3, h4, h5, h6, p, hr, ul {
   display:inline-block;
   float:left;
   position:relative;
@@ -17,9 +17,11 @@ h1, h2, h3, h4, h5, h6, p, hr {
 
 h2 {
   text-align:center;
-  text-decoration:underline;
 }
 
+.error_messages h2 {
+  text-align:left;
+}
 .container {
   width:90% !important;
   display:inline-block;
