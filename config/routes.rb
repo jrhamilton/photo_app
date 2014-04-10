@@ -1,5 +1,5 @@
 AlbumShare::Application.routes.draw do
-
+root to: 'photos#index'
 match('signup', {:via => :get, :to => 'users#new'})
 match('login', {:via => :get, :to => 'sessions#new'})
 match('logout', {:via => :get, :to => 'sessions#destroy'})

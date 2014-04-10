@@ -16,4 +16,5 @@
     <%= f.file_field :avatar %>
   </div>
   <div class="actions"><%= f.submit "Update" %></div>
+  <%= link_to "Cancel", user_path(@user.slug), :class => "btn btn-danger" %>
 <% end %>

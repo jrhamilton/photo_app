@@ -13,7 +13,8 @@
         <% if current_user %>
           <li class="navbar-text pull-right">Logged in as <%= current_user.name %></li>
           <li class="navbar-text pull-right"><%= link_to "Log Out", logout_path %></li>
-          <li class="navbar-text pull-right"><%= link_to "Edit Profile", edit_user_path %>
+          <li class="navbar-text pull-right"><%= link_to "Profile Page", "/users/#{current_user.slug}" %>
+          <li class="navbar-text pull-right"><%= link_to "Edit Profile", "/users/#{current_user.slug}/edit" %>
         <% else %>
           <li class="navbar-right"><%= link_to "Sign Up", new_user_path %></li>
           <li class="navbar-right"><%= link_to "Log in", new_session_path %></li>

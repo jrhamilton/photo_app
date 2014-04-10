@@ -2,12 +2,59 @@ body {
   padding-top: 100px;
 }
 
+
+
+div, form, h1, h2, h3, h4, h5, h6, p, hr {
+  display:inline-block;
+  float:left;
+  position:relative;
+}
+
+h1, h2, h3, h4, h5, h6, p, hr {
+  width:100%;
+  clear:both;
+}
+
+h2 {
+  text-align:center;
+  text-decoration:underline;
+}
+
+.container {
+  width:90% !important;
+  display:inline-block;
+  margin-left:5% !important;
+  margin-right:0px !important;
+  overflow:hidden;
+}
+
+.user_box_right {
+  float:right;
+  width:50%;
+}
+
+form {
+  clear:right;
+}
+
+.form-contrl input.submit {
+  clear:both;
+}
+
+form .actions {
+  clear:both;
+}
+
+.display-image-block {
+}
+
 .display-image {
   display:inline-block;
   float:left;
   position:relative;
-  width:100%;
   padding: 20px;
+  padding-bottom:none;
+  clear:both;
 }
 
 .photo-display {
@@ -20,4 +67,6 @@ body {
 
 .xdelete {
   margin-left:20px;
+  clear:both;
 }
+
