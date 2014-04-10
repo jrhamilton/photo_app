@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
   has_many :photos, through: :albums
   has_many :photos, through: :tags
 
-
   has_secure_password
 
   has_attached_file :avatar, :styles => { :medium => "300x300", :thumb => "100x100" }, :default_url => "/images/:style/missing.png"
