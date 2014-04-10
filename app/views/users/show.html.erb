@@ -1,0 +1,34 @@
+<h1>Howdy, <%= @user.name %></h1>
+
+<p><%= image_tag @user.avatar.url(:medium), :class => 'display-image' %></p>
+
+<%= form_for @album do |f| %>
+  <div class="form-contrl">
+    <%= f.label "Album Name" %><br />
+    <%= f.text_field :name %>
+  </div>
+  <%= f.hidden_field :user_id, value: @user.id %>
+  <div class="actions"><%= f.submit "Create Album" %></div>
+<% end %>
+
+<p>Here are your album bombs!</p>
+
+<div class="row">
+  <% @user.albums.each do |album| %>
+    <div class="col-md-3 photo-display">
+      <% if album.photos.length > 0 %>
+        <%= link_to image_tag(album.photos[0].picture.url(:medium)), album_path(album), :class => 'display-image' %>
+        <%= album.name %><br />
+
+        <%= link_to "Delete Album", album_path(album),
+                                :confirm => "Are you sure?",
+                                :method => "delete",
+                                :class => "btn btn-danger btn-xs xdelete" %>
+      <% else %>
+        <h2>No Photos</h2>
+        <%= link_to "Edit Album", album_path(album), :class => "btn btn-success" %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+

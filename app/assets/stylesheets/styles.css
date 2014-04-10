@@ -1,0 +1,23 @@
+body {
+  padding-top: 100px;
+}
+
+.display-image {
+  display:inline-block;
+  float:left;
+  position:relative;
+  width:100%;
+  padding: 20px;
+}
+
+.photo-display {
+  margin: 20px;
+  display:inline-block;
+  float:left;
+  position:relative;
+  overflow:hidden;
+}
+
+.xdelete {
+  margin-left:20px;
+}

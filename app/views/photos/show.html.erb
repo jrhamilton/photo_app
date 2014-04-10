@@ -1,0 +1,14 @@
+<h1><%= @photo.name %></h1>
+<%= link_to "Go Back to Your Main Profile Page", user_path(@photo.album.user.slug), :class => "btn btn-primary" %>
+<%= image_tag @photo.picture.url(:original), :class=> "huge" %>
+<h3>Tags:</h3>
+<% @photo.tags.each do |tag| %>
+  <%= tag.user.name %>
+<% end %>
+<%= form_for(@tag) do |f| %>
+  <%= f.collection_select :user_id, User.all, :id, :name %>
+  <%= f.hidden_field :photo_id, value: @photo.id %>
+  <%= f.submit(:class => "btn btn-primary") %>
+<% end %>
+
+

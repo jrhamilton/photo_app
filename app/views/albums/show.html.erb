@@ -1,0 +1,29 @@
+<h1>You are in your <%= @album.name %> Album</h1>
+<%= link_to "Go Back to Your Main Profile Page", user_path(@album.user.slug), :class => "btn btn-primary" %>
+
+<%= form_for @photo, :url => photos_path, :html => { :multipart => true } do |f| %>
+  <div class="form-contrl">
+    <%= f.label "Picture Name" %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="form-contrl">
+    <%= f.label "Add A Picture" %><br />
+    <%= f.file_field :picture %>
+  </div>
+  <%= f.hidden_field :album_id, value: @album.id %>
+  <div class="actions"><%= f.submit "Upload" %></div>
+<% end %>
+
+<div class="row">
+  <% @album.photos.each do |photo| %>
+    <div class="col-md-3 photo-display">
+      <%= link_to image_tag(photo.picture.url(:medium)), photo_path(photo), :class => 'display-image' %>
+      <p> <%= photo.name %> </p>
+      <%= link_to "Delete Photo", photo_path(photo),
+                              :confirm => "Are you sure?",
+                              :method => "delete",
+                              :class => "btn btn-danger btn-xs xdelete" %>
+      <%= link_to "Edit Photo", photo_path(photo.id), :class => "btn btn-success btn-xs" %>
+    </div>
+  <% end %>
+</div>
