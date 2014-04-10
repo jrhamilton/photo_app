@@ -43,6 +43,7 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
     @album = Album.find(@photo.album_id)
     @user = User.find(@album.user_id)
+    @has_photo = Favorite.has_photo({:user_id => @user.id, :photo_id => @photo.id})
   end
 
   def destroy

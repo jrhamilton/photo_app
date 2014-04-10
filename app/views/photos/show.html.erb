@@ -28,13 +28,19 @@
   <%= f.submit(:class => "btn btn-primary") %>
 <% end %>
 
-<% if !@user.favorites.include? @photo %>
+<% if !@has_photo %>
   <%= form_for(@favorite) do |f| %>
     <%= f.label "Favorite this Photo" %>
-    <%= f.check_box :photo_id, :value => @photo.id %>
-    <%= f.hidden_field :user_id,  :value => @user.id %>
+    <%= f.check_box :user_id, :value => @user.id %>
+    <%= f.hidden_field :photo_id, :value => @photo.id %>
+      <% if @user.favorites.include? @favorite %>
+        checked
+      <% end %>
     <%= f.submit(:class => "btn btn-primary heart") %>
   <% end %>
+<% else %>
+  <span>Favorite</span>
 <% end %>
+
 
 

@@ -12,7 +12,9 @@ class FavoritesController < ApplicationController
 
   def create
     @favorite = Favorite.new(favorite_params)
+    @user = @favorite.user
     if @favorite.save
+      @user.favorites << @favorite
       flash[:notice] = "Your Favorite was added!"
       redirect_to :back
     else
