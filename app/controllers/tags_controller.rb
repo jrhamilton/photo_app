@@ -38,7 +38,7 @@ class TagsController < ApplicationController
 
   def show
     @photo = Photo.new
-    @tag = Tag.find(params[:id])
+    @user = User.find_by(slug: params[:id])
   end
 
   def destroy

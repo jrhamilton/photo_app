@@ -1,0 +1,6 @@
+<h2>All Tagged Photos of <%= "#{@user.name}" %></h2>
+
+<% @user.tags.each do |tag| %>
+  <%= image_tag tag.photo.picture.url(:medium), :class=> "huge" %>
+<% end %>
+

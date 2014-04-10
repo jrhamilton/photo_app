@@ -3,12 +3,38 @@
 <%= image_tag @photo.picture.url(:original), :class=> "huge" %>
 <h3>Tags:</h3>
 <% @photo.tags.each do |tag| %>
-  <%= tag.user.name %>
+  <li><%= tag.user.name %>
+      <%= link_to "Delete Tag", tag_path(tag),
+                                :confirm => "Are you sure?",
+                                :method => "delete",
+                                :class => "btn btn-danger btn-xs xdelete" %></li>
 <% end %>
+
+
+
 <%= form_for(@tag) do |f| %>
   <%= f.collection_select :user_id, User.all, :id, :name %>
   <%= f.hidden_field :photo_id, value: @photo.id %>
   <%= f.submit(:class => "btn btn-primary") %>
+<% end %>
+
+<div class="clear"></div>
+
+<%= form_for(@photo) do |f| %>
+  <%= f.label "Change Photo Name?" %>
+  <%= f.text_field :name, :value => @photo.name %>
+  <%= f.label "Change Album?" %>
+  <%= f.collection_select :album_id, @user.albums, :id, :name %>
+  <%= f.submit(:class => "btn btn-primary") %>
+<% end %>
+
+<% if !@user.favorites.include? @photo %>
+  <%= form_for(@favorite) do |f| %>
+    <%= f.label "Favorite this Photo" %>
+    <%= f.check_box :photo_id, :value => @photo.id %>
+    <%= f.hidden_field :user_id,  :value => @user.id %>
+    <%= f.submit(:class => "btn btn-primary heart") %>
+  <% end %>
 <% end %>
 
 

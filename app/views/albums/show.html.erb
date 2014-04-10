@@ -1,5 +1,7 @@
 <h1>You are in your <%= @album.name %> Album</h1>
+<%= render 'layouts/errors', :object => @photo %>
 <%= link_to "Go Back to Your Main Profile Page", user_path(@album.user.slug), :class => "btn btn-primary" %>
+
 
 <%= form_for @photo, :url => photos_path, :html => { :multipart => true } do |f| %>
   <div class="form-contrl">

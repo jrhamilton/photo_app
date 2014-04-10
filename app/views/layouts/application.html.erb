@@ -21,6 +21,11 @@
         <% end %>
       </ul>
     </nav>
+    <% if flash[:alert] %>
+      <div id="flash-alert">
+
+      </div>
+    <% end %>
     <%= flash[:alert] %>
     <%= flash[:notice] %>
     <%= yield %>

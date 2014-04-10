@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many :albums
-  has_many :photos, through: :albums
-  has_many :photos, through: :tags
+  has_many :tags
+  has_many :favorites
 
   has_secure_password
 

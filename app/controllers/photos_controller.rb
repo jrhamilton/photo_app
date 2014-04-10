@@ -11,12 +11,14 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(photo_params)
+    @album = @photo.album
+    @user = @album.user
     if @photo.save
       flash[:notice] = "Your photo name was added!"
       redirect_to :back
     else
       flash[:alert] = "Try again."
-      render 'users/show'
+      render 'albums/show'
     end
   end
 
@@ -24,7 +26,7 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
     if @photo.update(photo_params)
       flash[:notice] = "Your photo has been updated!"
-      redirect_to photos_path
+      redirect_to :back
     else
       flash[:alert] = "Try again"
       render 'new'
@@ -37,7 +39,10 @@ class PhotosController < ApplicationController
 
   def show
     @tag = Tag.new
+    @favorite = Favorite.new
     @photo = Photo.find(params[:id])
+    @album = Album.find(@photo.album_id)
+    @user = User.find(@album.user_id)
   end
 
   def destroy

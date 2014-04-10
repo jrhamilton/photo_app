@@ -1,0 +1,5 @@
+<h2>All Favorited Photos for <%= "#{@user.name}" %></h2>
+
+<% @user.favorites.each do |favorite| %>
+  <%= image_tag favorite.photo.picture.url(:medium), :class=> "huge" %>
+<% end %>

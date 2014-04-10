@@ -1,8 +1,11 @@
 <h1>Howdy, <%= @user.name %></h1>
+<%= link_to "All Tagged Photos", "/users/#{@user.slug}/tags", :class => "btn btn-info" %>
 
 
 
 <%= image_tag @user.avatar.url(:medium), :class => 'display-image' %>
+
+
 
 <div class="user_box_right">
   <%= render 'layouts/errors', :object => @album %>
@@ -18,7 +21,7 @@
 </div>
 
 <h2>Here are your album bombs!</h2>
-<hr class="leaves">
+<hr>
 
 <div class="row">
   <% @user.albums.each do |album| %>
@@ -27,17 +30,15 @@
         <div class="display-image-block">
           <%= link_to image_tag(album.photos[0].picture.url(:medium)), album_path(album), :class => 'display-image' %>
         </div>
+      <% else %>
+        <h3>No Photos</h3>
+      <% end %>
         <h3><%= album.name %><br /></h3>
         <%= link_to "Edit Album", album_path(album), :class => "btn btn-success" %>
         <%= link_to "Delete Album", album_path(album),
                                 :confirm => "Are you sure?",
                                 :method => "delete",
-                                :class => "btn btn-danger btn-xs xdelete" %>
-      <% else %>
-        <div class="display-image-block" style="background-color:grey">No Photos</h3></div>
-        <h3><%= album.name %><br /></h3>
-        <%= link_to "Edit Album", album_path(album), :class => "btn btn-success" %>
-      <% end %>
+                                :class => "btn btn-danger xdelete" %>
     </div>
   <% end %>
 </div>
